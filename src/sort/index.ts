@@ -1,6 +1,6 @@
 import { view, Component, Events, Store } from '@storefront/core';
 
-@view('gb-sort', require('./index.html'), require('./index.css'), [
+@view('gb-sort', require('./index.html'), [
   { name: 'labels', default: [] }
 ])
 class Sort extends Component {

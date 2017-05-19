@@ -37,18 +37,28 @@
     "restart": {
       "watchFiles": "src/**/*.{ts,html,css}",
       "copyFiles": "src/**/*.{html,css}",
+      "testFiles": [
+        "test/bootstrap.ts",
+        "test/**/*.ts"
+      ],
       "releaseOpts": {
         "public": true
       }
     }
   },
   "devDependencies": {
+    "@types/chai": "^3.5.2",
+    "@types/sinon": "^2.2.2",
     "babel-preset-env": "^1.4.0",
     "babel-preset-stage-3": "^6.24.1",
+    "chai": "^3.5.0",
     "condition-circle": "^1.5.0",
     "cz-conventional-changelog": "^2.0.0",
     "husky": "^0.13.3",
+    "mocha-suite": "^1.0.9",
+    "mock-require": "^2.0.2",
     "re-start": "^1.13.0",
+    "sinon": "^2.2.0",
     "start-babel-cli": "^4.0.1",
     "tslint": "^5.2.0",
     "tslint-config-groupby": "^1.0.0",
