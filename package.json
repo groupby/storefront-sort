@@ -48,6 +48,7 @@
   },
   "devDependencies": {
     "@types/chai": "^3.5.2",
+    "@types/node": "^7.0.21",
     "@types/sinon": "^2.2.2",
     "babel-preset-env": "^1.4.0",
     "babel-preset-stage-3": "^6.24.1",
