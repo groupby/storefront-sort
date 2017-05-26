@@ -3,10 +3,7 @@
   "compilerOptions": {
     "lib": [
       "ES2015",
-      "ES2016.Array.Include",
-      "ES2017.Object",
-      "DOM",
-      "ScriptHost"
+      "DOM"
     ],
     "module": "commonjs",
     "moduleResolution": "node",
