@@ -19,7 +19,8 @@
   "module:esnext": "esnext/index.js",
   "files": [
     "dist/",
-    "esnext/"
+    "esnext/",
+    "src/"
   ],
   "scripts": {
     "start": "start-runner -p re-start/presets/typescript",
