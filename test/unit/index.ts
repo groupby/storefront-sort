@@ -4,6 +4,6 @@ import suite from './_suite';
 
 suite('package', ({ expect }) => {
   it('should expose Sort', () => {
-    expect(pkg).to.eq(Sort);
+    expect(pkg.Sort).to.eq(Sort);
   });
 });
