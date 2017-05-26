@@ -61,7 +61,7 @@
     "husky": "^0.13.3",
     "mocha-suite": "^1.0.9",
     "mock-require": "^2.0.2",
-    "re-start": "^1.14.1",
+    "re-start": "^1.14.2",
     "sinon": "^2.3.2",
     "start-babel-cli": "^4.0.1",
     "tslint": "^5.3.2",
