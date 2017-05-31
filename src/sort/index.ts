@@ -1,19 +1,17 @@
-import { view, Component, Events, Store } from '@storefront/core';
+import { tag, Events, Store, Tag } from '@storefront/core';
 
-@view('gb-sort', require('./index.html'), [
+@tag('gb-sort', require('./index.html'), [
   { name: 'labels', default: [] }
 ])
-class Sort extends Component {
+class Sort {
 
-  props: Sort.Props;
   state: Sort.State = {
     sorts: [],
     // TODO make this better by fixin the sort action
     onSelect: (index) => this.flux.sort(index)
   };
 
-  constructor() {
-    super();
+  init() {
     this.flux.on(Events.SORTS_UPDATED, this.updateSorts);
   }
 
@@ -36,13 +34,20 @@ class Sort extends Component {
   }
 }
 
+interface Sort extends Tag<Sort.Props, Sort.State> { }
 namespace Sort {
   export interface Props {
     labels: string[];
   }
+
   export interface State {
-    sorts: Array<{ label: string, selected?: boolean }>;
+    sorts: Option[];
     onSelect(index: number): void;
+  }
+
+  export interface Option {
+    label: string;
+    selected?: boolean;
   }
 }
 
