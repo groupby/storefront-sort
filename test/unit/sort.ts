@@ -18,8 +18,18 @@ suite('Sort', ({ expect, spy }) => {
   });
 
   describe('init()', () => {
+    it('should call updateSorts()', () => {
+      const updateSorts = sort.updateSorts = spy();
+      sort.flux = <any>{ on: () => null };
+
+      sort.init();
+
+      expect(updateSorts.called).to.be.true;
+    });
+
     it('should listen for SORTS_UPDATED', () => {
       const on = spy();
+      sort.updateSorts = () => null;
       sort.flux = <any>{ on };
 
       sort.init();
@@ -28,86 +38,57 @@ suite('Sort', ({ expect, spy }) => {
     });
   });
 
-  describe('onBeforeMount()', () => {
-    it('should update state', () => {
-      const selected = ['a', 'b'];
-      const sorts = { c: 'd' };
-      const state = { data: { sorts } };
-      const getState = spy(() => state);
-      const selectSorts = sort.selectSorts = spy(() => selected);
-      sort.flux = <any>{ store: { getState } };
-      sort.state = <any>{ e: 'f' };
-      sort.expose = () => null;
-
-      sort.onBeforeMount();
-
-      expect(sort.state).to.eql({ e: 'f', sorts: selected });
-      expect(selectSorts.calledWith(sorts)).to.be.true;
-    });
-
-    it('should call expose()', () => {
-      const expose = sort.expose = spy();
-      sort.selectSorts = () => null;
-      sort.flux = <any>{ store: { getState: () => ({ data: {} }) } };
-      sort.state = <any>{ e: 'f' };
-
-      sort.onBeforeMount();
-
-      expect(expose.calledWith('sort')).to.be.true;
-    });
-  });
-
   describe('updateSorts()', () => {
     it('should set sorts', () => {
-      const sorts: any = { a: 'b' };
+      const state: any = { a: 'b' };
       const selected = ['c', 'd'];
       const selectSorts = sort.selectSorts = spy(() => selected);
       const set = sort.set = spy();
+      sort.flux = <any>{ store: { getState: () => state } };
 
-      sort.updateSorts(sorts);
+      sort.updateSorts();
 
-      expect(selectSorts.calledWith(sorts)).to.be.true;
+      expect(selectSorts.calledWith(state)).to.be.true;
       expect(set.calledWith({ sorts: selected })).to.be.true;
     });
   });
 
   describe('selectSorts()', () => {
     it('should remap sorts', () => {
-      sort.props = <any>{ labels: ['a', 'b', 'c'] };
+      const getLabel = sort.getLabel = spy(() => 'x');
+      const sort1 = { field: 'variant.colour', descending: true };
+      const sort2 = { field: 'price' };
+      const sort3 = { field: 'size', descending: true };
 
-      const options = sort.selectSorts({
-        items: [
-          { field: 'variant.colour', descending: true },
-          { field: 'price' },
-          { field: 'size', descending: true },
-        ],
-        selected: 1
+      const options = sort.selectSorts(<any>{
+        data: {
+          sorts: { items: [sort1, sort2, sort3], selected: 1 }
+        }
       });
 
+      expect(getLabel.calledWith(sort1, 0)).to.be.true;
+      expect(getLabel.calledWith(sort2, 1)).to.be.true;
+      expect(getLabel.calledWith(sort3, 2)).to.be.true;
       expect(options).to.eql([
-        { label: 'a', selected: false },
-        { label: 'b', selected: true },
-        { label: 'c', selected: false },
+        { label: 'x', selected: false },
+        { label: 'x', selected: true },
+        { label: 'x', selected: false },
       ]);
     });
+  });
 
-    it('should default to value expression if no label', () => {
-      sort.props = <any>{ labels: [null, null, null] };
+  describe('getLabel()', () => {
+    it('should return configured label', () => {
+      sort.props.labels = ['A', 'B', 'C'];
 
-      const options = sort.selectSorts({
-        items: [
-          { field: 'variant.colour', descending: true },
-          { field: 'price' },
-          { field: 'size', descending: true },
-        ],
-        selected: 1
-      });
+      expect(sort.getLabel(<any>{}, 2)).to.eq('C');
+    });
 
-      expect(options).to.eql([
-        { label: 'variant.colour Descending', selected: false },
-        { label: 'price Ascending', selected: true },
-        { label: 'size Descending', selected: false },
-      ]);
+    it('should generate label', () => {
+      sort.props.labels = [];
+
+      expect(sort.getLabel({ field: 'age', descending: true }, 2)).to.eq('age Descending');
+      expect(sort.getLabel({ field: 'age' }, 2)).to.eq('age Ascending');
     });
   });
 });
