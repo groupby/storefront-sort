@@ -1,4 +1,4 @@
-import { Component, Events } from '@storefront/core';
+import { Events } from '@storefront/core';
 import Sort from '../../src/sort';
 import suite from './_suite';
 

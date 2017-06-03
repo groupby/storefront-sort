@@ -1,10 +1,12 @@
-import { tag, Events, Store, Tag } from '@storefront/core';
+import { alias, tag, Events, Store, Tag } from '@storefront/core';
 
-@tag('gb-sort', require('./index.html'), [
-  { name: 'labels', default: [] }
-])
+@alias('sort')
+@tag('gb-sort', require('./index.html'))
 class Sort {
 
+  props: Sort.Props = {
+    labels: []
+  };
   state: Sort.State = {
     sorts: [],
     // TODO make this better by fixin the sort action
@@ -12,25 +14,27 @@ class Sort {
   };
 
   init() {
+    this.updateSorts();
     this.flux.on(Events.SORTS_UPDATED, this.updateSorts);
   }
 
-  onBeforeMount() {
-    this.state = {
-      ...this.state,
-      sorts: this.selectSorts(this.flux.store.getState().data.sorts)
-    };
-    this.expose('sort');
-  }
+  updateSorts = () =>
+    this.set({ sorts: this.selectSorts(this.flux.store.getState()) })
 
-  updateSorts = (sorts: Store.SelectableList<Store.Sort>) =>
-    this.set({ sorts: this.selectSorts(sorts) })
-
-  selectSorts(sorts: Store.SelectableList<Store.Sort>) {
+  selectSorts(state: Store.State) {
+    const sorts = state.data.sorts;
     return sorts.items.map((sort, index) => ({
-      label: this.props.labels[index] || `${sort.field} ${sort.descending ? 'Descending' : 'Ascending'}`,
+      label: this.getLabel(sort, index),
       selected: sorts.selected === index
     }));
+  }
+
+  getLabel(sort: Store.Sort, index: number) {
+    if (index < this.props.labels.length) {
+      return this.props.labels[index];
+    } else {
+      return `${sort.field} ${sort.descending ? 'Descending' : 'Ascending'}`;
+    }
   }
 }
 
