@@ -24,7 +24,7 @@ suite('Sort', ({ expect, spy }) => {
 
       sort.init();
 
-      expect(updateSorts.called).to.be.true;
+      expect(updateSorts).to.be.called;
     });
 
     it('should listen for SORTS_UPDATED', () => {
@@ -34,7 +34,7 @@ suite('Sort', ({ expect, spy }) => {
 
       sort.init();
 
-      expect(on.calledWith(Events.SORTS_UPDATED, sort.updateSorts)).to.be.true;
+      expect(on).to.be.calledWith(Events.SORTS_UPDATED, sort.updateSorts);
     });
   });
 
@@ -48,8 +48,8 @@ suite('Sort', ({ expect, spy }) => {
 
       sort.updateSorts();
 
-      expect(selectSorts.calledWith(state)).to.be.true;
-      expect(set.calledWith({ sorts: selected })).to.be.true;
+      expect(selectSorts).to.be.calledWith(state);
+      expect(set).to.be.calledWith({ sorts: selected });
     });
   });
 
@@ -66,9 +66,9 @@ suite('Sort', ({ expect, spy }) => {
         }
       });
 
-      expect(getLabel.calledWith(sort1, 0)).to.be.true;
-      expect(getLabel.calledWith(sort2, 1)).to.be.true;
-      expect(getLabel.calledWith(sort3, 2)).to.be.true;
+      expect(getLabel).to.be.calledWith(sort1, 0);
+      expect(getLabel).to.be.calledWith(sort2, 1);
+      expect(getLabel).to.be.calledWith(sort3, 2);
       expect(options).to.eql([
         { label: 'x', selected: false },
         { label: 'x', selected: true },
