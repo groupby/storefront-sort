@@ -8,11 +8,26 @@ suite('Sort', ({ expect, spy }) => {
   beforeEach(() => sort = new Sort());
 
   describe('constructor()', () => {
-    describe('state', () => {
-      describe('onSelect()', () => {
-        it('should set initial sorts');
+    describe('props', () => {
+      it('should set initial value', () => {
+        expect(sort.props).to.eql({ labels: [] });
+      });
+    });
 
-        it('should call flux.sort()');
+    describe('state', () => {
+      it('should set initial value', () => {
+        expect(sort.state.sorts).to.eql([]);
+      });
+
+      describe('onSelect()', () => {
+        it('should call flux.sort()', () => {
+          const sortSpy = spy();
+          sort.flux = <any>{ sort: sortSpy };
+
+          sort.state.onSelect(9);
+
+          expect(sortSpy).to.be.calledWith(9);
+        });
       });
     });
   });
