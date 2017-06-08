@@ -45,12 +45,6 @@
         "test/bootstrap.ts",
         "test/**/*.ts"
       ],
-      "testCompileOpts": {
-        "compilerOptions": {
-          "sourceMap": false,
-          "inlineSourceMap": true
-        }
-      },
       "releaseOpts": {
         "public": true
       }
