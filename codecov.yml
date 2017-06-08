@@ -1,2 +1,2 @@
 fixes:
-  - 'root/storefront-*/::'
+  - 'root/storefront-sort/src/::src/'
