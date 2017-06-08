@@ -45,6 +45,12 @@
         "test/bootstrap.ts",
         "test/**/*.ts"
       ],
+      "testCompileOpts": {
+        "compilerOptions": {
+          "sourceMap": false,
+          "inlineSourceMap": true
+        }
+      },
       "releaseOpts": {
         "public": true
       }
@@ -55,18 +61,16 @@
     "@types/node": "^7.0.29",
     "@types/sinon": "^2.3.1",
     "@types/sinon-chai": "^2.7.28",
-    "babel-preset-env": "^1.5.2",
-    "babel-preset-stage-3": "^6.24.1",
     "chai": "^4.0.2",
     "condition-circle": "^1.5.0",
     "cz-conventional-changelog": "^2.0.0",
     "husky": "^0.13.3",
     "mocha-suite": "^1.0.9",
     "mock-require": "^2.0.2",
-    "re-start": "^1.14.6",
+    "re-start": "^1.14.7",
     "sinon": "^2.3.2",
     "sinon-chai": "^2.10.0",
-    "start-babel-cli": "^4.0.1",
+    "start-simple-cli": "^4.1.1",
     "tslint": "^5.4.3",
     "tslint-config-groupby": "^1.0.0",
     "typescript": "^2.3.3"
