@@ -61,15 +61,15 @@
     "husky": "^0.13.3",
     "mocha-suite": "^1.0.9",
     "mock-require": "^2.0.2",
-    "re-start": "^1.14.7",
-    "sinon": "^2.3.2",
-    "sinon-chai": "^2.10.0",
+    "re-start": "^1.14.8",
+    "sinon": "^2.3.4",
+    "sinon-chai": "^2.11.0",
     "start-simple-cli": "^4.1.1",
     "tslint": "^5.4.3",
     "tslint-config-groupby": "^1.0.0",
     "typescript": "^2.3.3"
   },
   "dependencies": {
-    "@storefront/core": "dev"
+    "@storefront/core": "^1.2.2"
   }
 }

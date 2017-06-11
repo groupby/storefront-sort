@@ -5,6 +5,9 @@
       "ES2015",
       "DOM"
     ],
+    "types": [
+      "node"
+    ],
     "module": "commonjs",
     "moduleResolution": "node",
     "target": "ES5",
