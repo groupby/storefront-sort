@@ -21,12 +21,12 @@ suite('Sort', ({ expect, spy }) => {
 
       describe('onSelect()', () => {
         it('should call flux.sort()', () => {
-          const sortSpy = spy();
-          sort.flux = <any>{ sort: sortSpy };
+          const selectSort = spy();
+          sort.actions = <any>{ selectSort };
 
           sort.state.onSelect(9);
 
-          expect(sortSpy).to.be.calledWith(9);
+          expect(selectSort).to.be.calledWith(9);
         });
       });
     });

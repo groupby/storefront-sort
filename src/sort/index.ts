@@ -10,7 +10,7 @@ class Sort {
   state: Sort.State = {
     sorts: [],
     // TODO make this better by fixin the sort action
-    onSelect: (index) => this.flux.sort(index)
+    onSelect: (index) => this.actions.selectSort(index)
   };
 
   init() {
