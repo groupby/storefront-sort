@@ -20,7 +20,7 @@ suite('Sort', ({ expect, spy }) => {
       });
 
       describe('onSelect()', () => {
-        it('should call flux.sort()', () => {
+        it('should call actions.selectSort()', () => {
           const selectSort = spy();
           sort.actions = <any>{ selectSort };
 
