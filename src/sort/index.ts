@@ -1,5 +1,6 @@
-import { alias, tag, Events, Store, Tag } from '@storefront/core';
+import { alias, configurable, tag, Events, Store, Tag } from '@storefront/core';
 
+@configurable
 @alias('sort')
 @tag('gb-sort', require('./index.html'))
 class Sort {
