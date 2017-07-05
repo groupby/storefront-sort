@@ -1,4 +1,4 @@
-import { alias, configurable, tag, Events, Store, Tag } from '@storefront/core';
+import { alias, configurable, tag, Events, Selectors, Store, Tag } from '@storefront/core';
 
 @configurable
 @alias('sort')
@@ -20,10 +20,10 @@ class Sort {
   }
 
   updateSorts = () =>
-    this.set({ sorts: this.selectSorts(this.flux.store.getState()) })
+    this.set({ sorts: this.extractSorts() })
 
-  selectSorts(state: Store.State) {
-    const sorts = state.data.sorts;
+  extractSorts() {
+    const sorts = Selectors.sorts(this.flux.store.getState());
     return sorts.items.map((sort, index) => ({
       label: this.getLabel(sort, index),
       selected: sorts.selected === index

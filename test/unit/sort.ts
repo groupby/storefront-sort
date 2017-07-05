@@ -1,8 +1,8 @@
-import { Events } from '@storefront/core';
+import { Events, Selectors } from '@storefront/core';
 import Sort from '../../src/sort';
 import suite from './_suite';
 
-suite('Sort', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => {
+suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias }) => {
   let sort: Sort;
 
   beforeEach(() => sort = new Sort());
@@ -60,30 +60,30 @@ suite('Sort', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => {
     it('should set sorts', () => {
       const state: any = { a: 'b' };
       const selected = ['c', 'd'];
-      const selectSorts = sort.selectSorts = spy(() => selected);
+      const extractSorts = sort.extractSorts = spy(() => selected);
       const set = sort.set = spy();
       sort.flux = <any>{ store: { getState: () => state } };
 
       sort.updateSorts();
 
-      expect(selectSorts).to.be.calledWith(state);
+      expect(extractSorts).to.be.calledWith(state);
       expect(set).to.be.calledWith({ sorts: selected });
     });
   });
 
-  describe('selectSorts()', () => {
+  describe('extractSorts()', () => {
     it('should remap sorts', () => {
+      const state = { a: 'b' };
       const getLabel = sort.getLabel = spy(() => 'x');
       const sort1 = { field: 'variant.colour', descending: true };
       const sort2 = { field: 'price' };
       const sort3 = { field: 'size', descending: true };
+      const selectSorts = stub(Selectors, 'sorts').returns({ items: [sort1, sort2, sort3], selected: 1 });
+      sort.flux = <any>{ store: { getState: () => state } };
 
-      const options = sort.selectSorts(<any>{
-        data: {
-          sorts: { items: [sort1, sort2, sort3], selected: 1 }
-        }
-      });
+      const options = sort.extractSorts();
 
+      expect(selectSorts).to.be.calledWithExactly(state);
       expect(getLabel).to.be.calledWith(sort1, 0);
       expect(getLabel).to.be.calledWith(sort2, 1);
       expect(getLabel).to.be.calledWith(sort3, 2);
