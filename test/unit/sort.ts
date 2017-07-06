@@ -60,13 +60,12 @@ suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias })
     it('should set sorts', () => {
       const state: any = { a: 'b' };
       const selected = ['c', 'd'];
-      const extractSorts = sort.extractSorts = spy(() => selected);
       const set = sort.set = spy();
+      sort.extractSorts = spy(() => selected);
       sort.flux = <any>{ store: { getState: () => state } };
 
       sort.updateSorts();
 
-      expect(extractSorts).to.be.calledWith(state);
       expect(set).to.be.calledWith({ sorts: selected });
     });
   });
