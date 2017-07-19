@@ -2,10 +2,13 @@ import { Events } from '@storefront/core';
 import Sort from '../../src/sort';
 import suite from './_suite';
 
-suite('Sort', ({ expect, spy }) => {
+suite('Sort', ({ expect, spy, itShouldBeConfigurable, itShouldHaveAlias }) => {
   let sort: Sort;
 
   beforeEach(() => sort = new Sort());
+
+  itShouldBeConfigurable(Sort);
+  itShouldHaveAlias(Sort, 'sort');
 
   describe('constructor()', () => {
     describe('props', () => {
