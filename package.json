@@ -1,6 +1,6 @@
 {
   "name": "@storefront/sort",
-  "version": "0.0.8-development",
+  "version": "1.5.1",
   "description": "StoreFront sort component",
   "keywords": [
     "storefront",
