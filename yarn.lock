@@ -76,6 +76,20 @@
     sayt "^0.1.8"
     uuid "^3.1.0"
 
+"@storefront/testing@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@storefront/testing/-/testing-1.0.2.tgz#34e63a5fca8968abba4d6b4f3d91aab167a97142"
+  dependencies:
+    "@types/chai" "^4.0.1"
+    "@types/node" "^8.0.17"
+    "@types/sinon" "^2.3.3"
+    "@types/sinon-chai" "^2.7.28"
+    chai "^4.1.0"
+    mocha-suite "^1.0.11"
+    mock-require "^2.0.2"
+    sinon "^2.4.1"
+    sinon-chai "^2.12.0"
+
 "@types/axios@^0.9.35":
   version "0.9.36"
   resolved "https://registry.yarnpkg.com/@types/axios/-/axios-0.9.36.tgz#94d156269562c726ce38115aeb8f34f09bfa3cd8"

@@ -1,7 +1,6 @@
+import { bootstrap } from '@storefront/testing';
 import * as chai from 'chai';
-import * as mock from 'mock-require';
-import * as sinonChai from 'sinon-chai';
 
-chai.use(sinonChai);
-
-mock('../src/sort/index.html', {});
+bootstrap(chai, __dirname, [
+  '../src/sort/index.html'
+]);

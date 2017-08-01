@@ -41,7 +41,7 @@ class Sort {
 
 interface Sort extends Tag<Sort.Props, Sort.State> { }
 namespace Sort {
-  export interface Props {
+  export interface Props extends Tag.Props {
     labels: string[];
   }
 
