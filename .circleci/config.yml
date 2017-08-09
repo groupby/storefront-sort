@@ -1,4 +1,5 @@
 defaults:
+  # TODO: see BBD-650
   node_cache: &node_cache
     key: node_cache-{{ .Branch }}-{{ checksum "package.json" }}
   build_cache: &build_cache
