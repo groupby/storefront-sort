@@ -39,9 +39,9 @@
     conventional-changelog "0.0.17"
     github-url-from-git "^1.4.0"
 
-"@storefront/core@~1.13.0":
-  version "1.13.0"
-  resolved "https://registry.yarnpkg.com/@storefront/core/-/core-1.13.0.tgz#b4b509fbedb991b7f6a2665f52eae443f08b5152"
+"@storefront/core@~1.14.0":
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/@storefront/core/-/core-1.14.0.tgz#4ec6dfda52ea2fed9d2dddea6868172ef6948791"
   dependencies:
     "@storefront/flux-capacitor" "1.12.1"
     "@types/clone" "^0.1.30"
@@ -102,11 +102,7 @@
   version "0.9.36"
   resolved "https://registry.yarnpkg.com/@types/axios/-/axios-0.9.36.tgz#94d156269562c726ce38115aeb8f34f09bfa3cd8"
 
-"@types/chai@*":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.0.0.tgz#4c9adabd2d04265769e6d9e847e86cc404dc7dcd"
-
-"@types/chai@^4.0.1":
+"@types/chai@*", "@types/chai@^4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.0.1.tgz#37fea779617cfec3fd2b19a0247e8bbdd5133bf6"
 
@@ -144,13 +140,9 @@
   version "2.0.28"
   resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-2.0.28.tgz#d6a9136d699257970fc74d899cd7b12a608d14da"
 
-"@types/lodash@^4.14.37":
+"@types/lodash@^4.14.37", "@types/lodash@^4.14.70":
   version "4.14.71"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.71.tgz#0dc383f78981216ac76e2f2c3afd998e0450e4c1"
-
-"@types/lodash@^4.14.70":
-  version "4.14.73"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.73.tgz#9837e47db8643ba5bcef2c7921f37d90f9c24213"
 
 "@types/loglevel@^1.4.29":
   version "1.4.29"
@@ -168,17 +160,13 @@
   version "2.2.41"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.41.tgz#e27cf0817153eb9f2713b2d3f6c68f1e1c3ca608"
 
-"@types/node@*":
-  version "8.0.18"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.18.tgz#9e96603a02a38889d08f451906f9cb56a2725ff5"
+"@types/node@*", "@types/node@^8.0.17":
+  version "8.0.17"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.17.tgz#677bc8c118cfb76013febb62ede1f31d2c7222a1"
 
 "@types/node@^7.0.14":
   version "7.0.41"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.41.tgz#4dbce9ae4b551df1ef4047904600c5814d58e1ce"
-
-"@types/node@^8.0.17":
-  version "8.0.17"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.17.tgz#677bc8c118cfb76013febb62ede1f31d2c7222a1"
 
 "@types/qs@^6.2.30":
   version "6.5.0"
@@ -207,11 +195,7 @@
     "@types/chai" "*"
     "@types/sinon" "*"
 
-"@types/sinon@*":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-2.3.1.tgz#5e214093e9e2345219ab0f31bf310c9790ad0712"
-
-"@types/sinon@^2.3.3":
+"@types/sinon@*", "@types/sinon@^2.3.3":
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-2.3.3.tgz#1f20b96f954b4997a09c1c0a20264aaba6b00147"
 
@@ -3104,17 +3088,13 @@ punycode@^1.2.4, punycode@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
-qs@^6.1.0, qs@^6.2.0:
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.0.tgz#8d04954d364def3efc55b5a0793e1e2c8b1e6e49"
+qs@^6.1.0, qs@^6.2.0, qs@~6.4.0:
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.4.0.tgz#13e26d28ad6b0ffaa91312cd3bf708ed351e7233"
 
 qs@~6.2.0:
   version "6.2.3"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.2.3.tgz#1cfcb25c10a9b2b483053ff39f5dfc9233908cfe"
-
-qs@~6.4.0:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.4.0.tgz#13e26d28ad6b0ffaa91312cd3bf708ed351e7233"
 
 querystring-es3@^0.2.0:
   version "0.2.1"
@@ -4212,11 +4192,7 @@ typescript@2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.4.1.tgz#c3ccb16ddaa0b2314de031e7e6fee89e5ba346bc"
 
-typescript@^2.3.3:
-  version "2.3.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.3.4.tgz#3d38321828231e434f287514959c37a82b629f42"
-
-typescript@^2.4.2:
+typescript@^2.3.3, typescript@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.4.2.tgz#f8395f85d459276067c988aa41837a8f82870844"
 
