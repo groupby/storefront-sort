@@ -23,7 +23,7 @@ class Sort {
     this.set({ sorts: this.extractSorts() })
 
   extractSorts() {
-    const sorts = Selectors.sorts(this.flux.store.getState());
+    const sorts = this.select(Selectors.sorts);
     return sorts.items.map((sort, index) => ({
       label: this.getLabel(sort, index),
       selected: sorts.selected === index

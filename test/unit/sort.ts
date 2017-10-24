@@ -77,12 +77,11 @@ suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias })
       const sort1 = { field: 'variant.colour', descending: true };
       const sort2 = { field: 'price' };
       const sort3 = { field: 'size', descending: true };
-      const selectSorts = stub(Selectors, 'sorts').returns({ items: [sort1, sort2, sort3], selected: 1 });
-      sort.flux = <any>{ store: { getState: () => state } };
+      const select = sort.select = spy(() => ({ items: [sort1, sort2, sort3], selected: 1 }));
 
       const options = sort.extractSorts();
 
-      expect(selectSorts).to.be.calledWithExactly(state);
+      expect(select).to.be.calledWithExactly(Selectors.sorts);
       expect(getLabel).to.be.calledWith(sort1, 0);
       expect(getLabel).to.be.calledWith(sort2, 1);
       expect(getLabel).to.be.calledWith(sort3, 2);
