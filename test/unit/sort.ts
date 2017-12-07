@@ -101,6 +101,7 @@ suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias })
       const sort2 = { field: 'price' };
       const sort3 = { field: 'size', descending: true };
       const select = sort.select = spy(() => ({ items: [sort1, sort2, sort3], selected: 1 }));
+      sort.props.storeSection = StoreSections.SEARCH;
 
       const options = sort.extractSorts();
 

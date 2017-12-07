@@ -10,13 +10,12 @@ class Sort {
   };
   state: Sort.State = {
     sorts: [],
-    // TODO make this better by fixin the sort action
     onSelect: (index) => {
       switch (this.props.storeSection) {
         case StoreSections.PAST_PURCHASES:
           this.actions.selectPastPurchasesSort(index);
           break;
-        default:
+        case StoreSections.SEARCH:
           this.actions.selectSort(index);
       }
     }
@@ -28,8 +27,9 @@ class Sort {
       case StoreSections.PAST_PURCHASES:
         this.flux.on(Events.PAST_PURCHASE_SORT_UPDATED, this.updateSorts);
         break;
-      default:
+      case StoreSections.SEARCH:
         this.flux.on(Events.SORTS_UPDATED, this.updateSorts);
+        break;
     }
   }
 
@@ -38,7 +38,6 @@ class Sort {
 
   extractSorts() {
     let sorts;
-    // todo refactor...
     switch (this.props.storeSection) {
       case StoreSections.PAST_PURCHASES:
         sorts = this.select(Selectors.pastPurchaseSort);
@@ -46,7 +45,7 @@ class Sort {
           label: this.getPastPurchasesLabel(sort),
           selected: sorts.selected === index
         }));
-      default:
+      case StoreSections.SEARCH:
         sorts = this.select(Selectors.sorts);
         return sorts.items.map((sort, index) => ({
           label: this.getLabel(sort, index),
