@@ -6,7 +6,6 @@ import { alias, configurable, tag, Events, Selectors, Store, StoreSections, Tag 
 class Sort {
 
   props: Sort.Props = {
-    storeSection: StoreSections.DEFAULT,
     labels: [],
   };
   state: Sort.State = {

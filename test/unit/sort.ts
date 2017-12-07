@@ -13,7 +13,7 @@ suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias })
   describe('constructor()', () => {
     describe('props', () => {
       it('should set initial value', () => {
-        expect(sort.props).to.eql({ labels: [], storeSection: StoreSections.DEFAULT });
+        expect(sort.props).to.eql({ labels: [] });
       });
     });
 
