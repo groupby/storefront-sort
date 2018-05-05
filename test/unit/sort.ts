@@ -49,7 +49,7 @@ suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias })
   describe('init()', () => {
     it('should call updateSorts()', () => {
       const updateSorts = sort.updateSorts = spy();
-      sort.flux = <any>{ on: () => null };
+      sort.subscribe = () => null;
 
       sort.init();
 
@@ -57,25 +57,23 @@ suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias })
     });
 
     it('should listen for SORTS_UPDATED when storeSection is search', () => {
-      const on = spy();
+      const subscribe = sort.subscribe = spy();
       sort.props.storeSection = StoreSections.SEARCH;
       sort.updateSorts = () => null;
-      sort.flux = <any>{ on };
 
       sort.init();
 
-      expect(on).to.be.calledWith(Events.SORTS_UPDATED, sort.updateSorts);
+      expect(subscribe).to.be.calledWith(Events.SORTS_UPDATED, sort.updateSorts);
     });
 
     it('should listen for PAST_PURCHASE_SORT_UPDATED when storeSection is pastPurchases', () => {
-      const on = spy();
+      const subscribe = sort.subscribe = spy();
       sort.props.storeSection = StoreSections.PAST_PURCHASES;
       sort.updateSorts = () => null;
-      sort.flux = <any>{ on };
 
       sort.init();
 
-      expect(on).to.be.calledWith(Events.PAST_PURCHASE_SORT_UPDATED, sort.updateSorts);
+      expect(subscribe).to.be.calledWith(Events.PAST_PURCHASE_SORT_UPDATED, sort.updateSorts);
     });
   });
 
