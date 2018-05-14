@@ -1,14 +1,14 @@
-import { Events, Selectors, StoreSections} from '@storefront/core';
+import { Events, Selectors, StoreSections } from '@storefront/core';
 import Sort from '../../src/sort';
 import suite from './_suite';
 
-suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias }) => {
+suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldProvideAlias }) => {
   let sort: Sort;
 
-  beforeEach(() => sort = new Sort());
+  beforeEach(() => (sort = new Sort()));
 
   itShouldBeConfigurable(Sort);
-  itShouldHaveAlias(Sort, 'sort');
+  itShouldProvideAlias(Sort, 'sort');
 
   describe('constructor()', () => {
     describe('props', () => {
@@ -48,7 +48,7 @@ suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias })
 
   describe('init()', () => {
     it('should call updateSorts()', () => {
-      const updateSorts = sort.updateSorts = spy();
+      const updateSorts = (sort.updateSorts = spy());
       sort.flux = <any>{ on: () => null };
 
       sort.init();
@@ -83,7 +83,7 @@ suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias })
     it('should set sorts', () => {
       const state: any = { a: 'b' };
       const selected = ['c', 'd'];
-      const set = sort.set = spy();
+      const set = (sort.set = spy());
       sort.extractSorts = spy(() => selected);
       sort.flux = <any>{ store: { getState: () => state } };
 
@@ -96,11 +96,11 @@ suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias })
   describe('extractSorts()', () => {
     it('should remap sorts', () => {
       const state = { a: 'b' };
-      const getLabel = sort.getLabel = spy(() => 'x');
+      const getLabel = (sort.getLabel = spy(() => 'x'));
       const sort1 = { field: 'variant.colour', descending: true };
       const sort2 = { field: 'price' };
       const sort3 = { field: 'size', descending: true };
-      const select = sort.select = spy(() => ({ items: [sort1, sort2, sort3], selected: 1 }));
+      const select = (sort.select = spy(() => ({ items: [sort1, sort2, sort3], selected: 1 })));
       sort.props.storeSection = StoreSections.SEARCH;
 
       const options = sort.extractSorts();
@@ -118,11 +118,11 @@ suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAlias })
 
     it('should remap sorts for pastPurchases', () => {
       const state = { a: 'b' };
-      const getPastPurchasesLabel = sort.getPastPurchasesLabel = spy(() => 'x');
+      const getPastPurchasesLabel = (sort.getPastPurchasesLabel = spy(() => 'x'));
       const sort1 = { field: 'variant.colour' };
       const sort2 = { field: 'price' };
       const sort3 = { field: 'size' };
-      const select = sort.select = spy(() => ({ items: [sort1, sort2, sort3], selected: 1 }));
+      const select = (sort.select = spy(() => ({ items: [sort1, sort2, sort3], selected: 1 })));
       sort.props.storeSection = StoreSections.PAST_PURCHASES;
 
       const options = sort.extractSorts();
