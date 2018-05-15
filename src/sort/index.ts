@@ -1,10 +1,9 @@
-import { alias, configurable, tag, Events, Selectors, Store, StoreSections, Tag } from '@storefront/core';
+import { configurable, provide, tag, Events, Selectors, Store, StoreSections, Tag } from '@storefront/core';
 
 @configurable
-@alias('sort')
+@provide('sort')
 @tag('gb-sort', require('./index.html'))
 class Sort {
-
   props: Sort.Props = {
     labels: [],
   };
@@ -18,23 +17,25 @@ class Sort {
         case StoreSections.SEARCH:
           this.actions.selectSort(index);
       }
-    }
+    },
   };
 
   init() {
-    this.updateSorts();
     switch (this.props.storeSection) {
       case StoreSections.PAST_PURCHASES:
-        this.flux.on(Events.PAST_PURCHASE_SORT_UPDATED, this.updateSorts);
+        this.subscribe(Events.PAST_PURCHASE_SORT_UPDATED, this.updateSorts);
         break;
       case StoreSections.SEARCH:
-        this.flux.on(Events.SORTS_UPDATED, this.updateSorts);
+        this.subscribe(Events.SORTS_UPDATED, this.updateSorts);
         break;
     }
   }
 
-  updateSorts = () =>
-    this.set({ sorts: this.extractSorts() })
+  onBeforeMount() {
+    this.updateSorts();
+  }
+
+  updateSorts = () => this.set({ sorts: this.extractSorts() });
 
   extractSorts() {
     let sorts;
@@ -43,13 +44,13 @@ class Sort {
         sorts = this.select(Selectors.pastPurchaseSort);
         return sorts.items.map((sort, index) => ({
           label: this.getPastPurchasesLabel(sort),
-          selected: sorts.selected === index
+          selected: sorts.selected === index,
         }));
       case StoreSections.SEARCH:
         sorts = this.select(Selectors.sorts);
         return sorts.items.map((sort, index) => ({
           label: this.getLabel(sort, index),
-          selected: sorts.selected === index
+          selected: sorts.selected === index,
         }));
     }
   }
@@ -67,7 +68,7 @@ class Sort {
   }
 }
 
-interface Sort extends Tag<Sort.Props, Sort.State> { }
+interface Sort extends Tag<Sort.Props, Sort.State> {}
 namespace Sort {
   export interface Props extends Tag.Props {
     labels: string[];
