@@ -21,15 +21,18 @@ class Sort {
   };
 
   init() {
-    this.updateSorts();
     switch (this.props.storeSection) {
       case StoreSections.PAST_PURCHASES:
-        this.flux.on(Events.PAST_PURCHASE_SORT_UPDATED, this.updateSorts);
+        this.subscribe(Events.PAST_PURCHASE_SORT_UPDATED, this.updateSorts);
         break;
       case StoreSections.SEARCH:
-        this.flux.on(Events.SORTS_UPDATED, this.updateSorts);
+        this.subscribe(Events.SORTS_UPDATED, this.updateSorts);
         break;
     }
+  }
+
+  onBeforeMount() {
+    this.updateSorts();
   }
 
   updateSorts = () => this.set({ sorts: this.extractSorts() });

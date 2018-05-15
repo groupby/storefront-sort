@@ -71,29 +71,30 @@
   dependencies:
     samsam "1.3.0"
 
-"@storefront/core@~1.38.0":
-  version "1.38.2"
-  resolved "https://registry.yarnpkg.com/@storefront/core/-/core-1.38.2.tgz#e6d597375a0ffeb06289ad24fdf37df56decd8b1"
+"@storefront/core@~1.40.0":
+  version "1.40.0"
+  resolved "https://registry.yarnpkg.com/@storefront/core/-/core-1.40.0.tgz#59b5c05b7ae36311c50ed4020eb88818fac6229d"
   dependencies:
-    "@storefront/flux-capacitor" "1.44.0"
+    "@storefront/flux-capacitor" "1.45.0"
     "@types/clone" "^0.1.30"
     "@types/deep-assign" "^0.1.0"
     "@types/js-cookie" "^2.0.28"
     "@types/lodash" "^4.14.70"
     "@types/loglevel" "^1.4.29"
-    "@types/riot" "^3.6.0"
+    "@types/riot" "^3.6.1"
     clone "^2.1.1"
     gb-tracker-client "3.5.5"
     js-cookie "^2.1.4"
     lodash.camelcase "^4.3.0"
     lodash.merge "^4.6.0"
     loglevel "^1.4.1"
-    riot "^3.4.4"
+    moize "^5.2.3"
+    riot "^3.9.5"
     url-parse "^1.1.9"
 
-"@storefront/flux-capacitor@1.44.0":
-  version "1.44.0"
-  resolved "https://registry.yarnpkg.com/@storefront/flux-capacitor/-/flux-capacitor-1.44.0.tgz#2e03a8f45617c3b83dd93aabb1568744b45692ee"
+"@storefront/flux-capacitor@1.45.0":
+  version "1.45.0"
+  resolved "https://registry.yarnpkg.com/@storefront/flux-capacitor/-/flux-capacitor-1.45.0.tgz#e6ba251afbf42cafde79278316cc337dbed92347"
   dependencies:
     "@manaflair/redux-batch" "^0.1.0"
     "@types/redux-logger" "^3.0.0"
@@ -217,7 +218,7 @@
   dependencies:
     redux "^3.6.0"
 
-"@types/riot@^3.6.0":
+"@types/riot@^3.6.1":
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/@types/riot/-/riot-3.6.1.tgz#955cacc770b57e0c7c78dc9855db92a86ecfe5de"
 
@@ -1514,6 +1515,10 @@ extsprintf@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.0.2.tgz#e1080e0658e300b06294990cc70e1502235fd550"
 
+fast-equals@^1.3.1:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/fast-equals/-/fast-equals-1.5.0.tgz#f86c0f9526d4090195d35e236a0bd67552bbce19"
+
 fast-levenshtein@~2.0.4:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
@@ -2337,7 +2342,7 @@ json-stable-stringify@^1.0.0, json-stable-stringify@^1.0.1:
   dependencies:
     jsonify "~0.0.0"
 
-json-stringify-safe@~5.0.1:
+json-stringify-safe@^5.0.1, json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
 
@@ -2627,6 +2632,10 @@ meow@^3.3.0:
     redent "^1.0.0"
     trim-newlines "^1.0.0"
 
+micro-memoize@^2.0.1:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/micro-memoize/-/micro-memoize-2.0.3.tgz#5122131971eae6c69249a8a63a91b7b5cee20111"
+
 micromatch@^2.1.5, micromatch@^2.2.0, micromatch@^2.3.7:
   version "2.3.11"
   resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-2.3.11.tgz#86677c97d1720b363431d04d0d15293bd38c1565"
@@ -2722,6 +2731,14 @@ mock-require@^2.0.2:
   resolved "https://registry.yarnpkg.com/mock-require/-/mock-require-2.0.2.tgz#1eaa71aad23013773d127dc7e91a3fbb4837d60d"
   dependencies:
     caller-id "^0.1.0"
+
+moize@^5.2.3:
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/moize/-/moize-5.2.3.tgz#0a0d8d070c4f4adf48cbc10b065dc3cf206698a7"
+  dependencies:
+    fast-equals "^1.3.1"
+    json-stringify-safe "^5.0.1"
+    micro-memoize "^2.0.1"
 
 ms@0.7.1:
   version "0.7.1"
@@ -3582,7 +3599,7 @@ riot-tmpl@^3.0.8:
   dependencies:
     eslint-config-riot "^1.0.0"
 
-riot@^3.4.4:
+riot@^3.9.5:
   version "3.10.0"
   resolved "https://registry.yarnpkg.com/riot/-/riot-3.10.0.tgz#81afb9b7c9c9efa921952a4f494c818ff128b399"
   dependencies:
