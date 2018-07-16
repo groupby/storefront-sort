@@ -29,9 +29,7 @@ class Sort {
         this.subscribe(Events.SORTS_UPDATED, this.updateSorts);
         break;
     }
-  }
 
-  onBeforeMount() {
     this.updateSorts();
   }
 
