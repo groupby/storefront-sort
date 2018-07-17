@@ -50,7 +50,7 @@ suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldProvideAlias
     it('should listen for SORTS_UPDATED when storeSection is search', () => {
       const subscribe = (sort.subscribe = spy());
       sort.props.storeSection = StoreSections.SEARCH;
-      sort.updateSorts = stub();
+      sort.updateSorts = () => null;
 
       sort.init();
 
@@ -60,7 +60,7 @@ suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldProvideAlias
     it('should listen for PAST_PURCHASE_SORT_UPDATED when storeSection is pastPurchases', () => {
       const subscribe = (sort.subscribe = spy());
       sort.props.storeSection = StoreSections.PAST_PURCHASES;
-      sort.updateSorts = stub();
+      sort.updateSorts = () => null;
 
       sort.init();
 
