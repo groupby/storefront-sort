@@ -50,6 +50,7 @@ suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldProvideAlias
     it('should listen for SORTS_UPDATED when storeSection is search', () => {
       const subscribe = (sort.subscribe = spy());
       sort.props.storeSection = StoreSections.SEARCH;
+      sort.updateSorts = () => null;
 
       sort.init();
 
@@ -59,18 +60,17 @@ suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldProvideAlias
     it('should listen for PAST_PURCHASE_SORT_UPDATED when storeSection is pastPurchases', () => {
       const subscribe = (sort.subscribe = spy());
       sort.props.storeSection = StoreSections.PAST_PURCHASES;
+      sort.updateSorts = () => null;
 
       sort.init();
 
       expect(subscribe).to.be.calledWith(Events.PAST_PURCHASE_SORT_UPDATED, sort.updateSorts);
     });
-  });
 
-  describe('onBeforeMount()', () => {
-    it('should call updateSorts()', () => {
+    it('should set up initial state', () => {
       const updateSorts = (sort.updateSorts = spy());
 
-      sort.onBeforeMount();
+      sort.init();
 
       expect(updateSorts).to.be.called;
     });
