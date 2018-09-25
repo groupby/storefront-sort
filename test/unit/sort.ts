@@ -13,7 +13,7 @@ suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldProvideAlias
   describe('constructor()', () => {
     describe('props', () => {
       it('should set initial value', () => {
-        expect(sort.props).to.eql({ labels: [] });
+        expect(sort.props).to.eql({ labels: [], pastPurchasesLabels: [] });
       });
     });
 
@@ -152,11 +152,26 @@ suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldProvideAlias
   });
 
   describe('getPastPurchasesLabel()', () => {
-    it('should return label', () => {
-      const field = 'giraffe';
-      const sortItem = { field };
+    it('should return past purchases label', () => {
+      sort.props.pastPurchasesLabels = ['A', 'B', 'C'];
 
-      expect(sort.getPastPurchasesLabel(sortItem)).to.eq(field);
+      expect(sort.getPastPurchasesLabel(<any>{}, 2)).to.eq('C');
+    });
+
+    it('should generate label', () => {
+      sort.props.pastPurchasesLabels = [];
+
+      expect(sort.getPastPurchasesLabel({ field: 'age', descending: true }, 2)).to.eq('age Descending');
+      expect(sort.getPastPurchasesLabel({ field: 'age' }, 2)).to.eq('age Ascending');
     });
   });
+
+  // describe('getPastPurchasesLabel()', () => {
+  //   it('should return label', () => {
+  //     const field = 'giraffe';
+  //     const sortItem = { field };
+
+  //     expect(sort.getPastPurchasesLabel(sortItem)).to.eq(field);
+  //   });
+  // });
 });
