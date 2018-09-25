@@ -165,13 +165,4 @@ suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldProvideAlias
       expect(sort.getPastPurchasesLabel({ field: 'age' }, 2)).to.eq('age Ascending');
     });
   });
-
-  // describe('getPastPurchasesLabel()', () => {
-  //   it('should return label', () => {
-  //     const field = 'giraffe';
-  //     const sortItem = { field };
-
-  //     expect(sort.getPastPurchasesLabel(sortItem)).to.eq(field);
-  //   });
-  // });
 });
