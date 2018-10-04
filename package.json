@@ -80,6 +80,6 @@
     "typescript": "^2.4.2"
   },
   "peerDependencies": {
-    "@storefront/core": "~1.46.9"
+    "@storefront/core": "~1.47.0"
   }
 }
