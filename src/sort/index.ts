@@ -7,7 +7,6 @@ class Sort {
   props: Sort.Props = {
     labels: [],
     pastPurchasesLabels: [],
-    storeSections: StoreSections.SEARCH
   };
   state: Sort.State = {
     sorts: [],
@@ -69,7 +68,6 @@ namespace Sort {
   export interface Props extends Tag.Props {
     labels: string[];
     pastPurchasesLabels: string[];
-    storeSections: any;
   }
 
   export interface State {
