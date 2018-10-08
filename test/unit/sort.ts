@@ -138,16 +138,16 @@ suite('Sort', ({ expect, spy, stub, itShouldBeConfigurable, itShouldProvideAlias
 
   describe('getLabel()', () => {
     it('should return configured label', () => {
-      sort.props.labels = ['A', 'B', 'C'];
+      const labels = ['A', 'B', 'C'];
 
-      expect(sort.getLabel(<any>{}, 2, sort.props.labels)).to.eq('C');
+      expect(sort.getLabel(<any>{}, 2, labels)).to.eq('C');
     });
 
     it('should generate label', () => {
-      sort.props.labels = [];
+      const labels = [];
 
-      expect(sort.getLabel({ field: 'age', descending: true }, 2, sort.props.labels)).to.eq('age Descending');
-      expect(sort.getLabel({ field: 'age' }, 2, sort.props.labels)).to.eq('age Ascending');
+      expect(sort.getLabel({ field: 'age', descending: true }, 2, labels)).to.eq('age Descending');
+      expect(sort.getLabel({ field: 'age' }, 2, labels)).to.eq('age Ascending');
     });
   });
 });

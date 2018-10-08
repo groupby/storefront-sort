@@ -56,7 +56,7 @@ class Sort {
 
   getLabel(sort: Store.Sort, index: number, labels: string[]) {
     if (index < labels.length) {
-      return this.props.labels[index];
+      return labels[index];
     } else {
       return `${sort.field} ${sort.descending ? 'Descending' : 'Ascending'}`;
     }
@@ -67,7 +67,7 @@ interface Sort extends Tag<Sort.Props, Sort.State> {}
 namespace Sort {
   export interface Props extends Tag.Props {
     labels: string[];
-    pastPurchasesLabels: string[];
+    pastPurchasesLabels?: string[];
   }
 
   export interface State {
