@@ -6,6 +6,7 @@ import { configurable, provide, tag, Events, Selectors, Store, StoreSections, Ta
 class Sort {
   props: Sort.Props = {
     labels: [],
+    pastPurchasesLabels: [],
   };
   state: Sort.State = {
     sorts: [],
@@ -41,35 +42,32 @@ class Sort {
       case StoreSections.PAST_PURCHASES:
         sorts = this.select(Selectors.pastPurchaseSort);
         return sorts.items.map((sort, index) => ({
-          label: this.getPastPurchasesLabel(sort),
+          label: this.getLabel(sort, index, this.props.pastPurchasesLabels),
           selected: sorts.selected === index,
         }));
       case StoreSections.SEARCH:
         sorts = this.select(Selectors.sorts);
         return sorts.items.map((sort, index) => ({
-          label: this.getLabel(sort, index),
+          label: this.getLabel(sort, index, this.props.labels),
           selected: sorts.selected === index,
         }));
     }
   }
 
-  getLabel(sort: Store.Sort, index: number) {
-    if (index < this.props.labels.length) {
-      return this.props.labels[index];
+  getLabel(sort: Store.Sort, index: number, labels: string[]) {
+    if (index < labels.length) {
+      return labels[index];
     } else {
       return `${sort.field} ${sort.descending ? 'Descending' : 'Ascending'}`;
     }
-  }
-
-  getPastPurchasesLabel(sort: Store.Sort) {
-    return sort.field;
   }
 }
 
 interface Sort extends Tag<Sort.Props, Sort.State> {}
 namespace Sort {
   export interface Props extends Tag.Props {
-    labels: string[];
+    labels?: string[];
+    pastPurchasesLabels?: string[];
   }
 
   export interface State {
