@@ -66,7 +66,7 @@ class Sort {
 interface Sort extends Tag<Sort.Props, Sort.State> {}
 namespace Sort {
   export interface Props extends Tag.Props {
-    labels: string[];
+    labels?: string[];
     pastPurchasesLabels?: string[];
   }
 
