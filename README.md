@@ -1,4 +1,10 @@
-# StoreFront sort
+# [MOVED] StoreFront sort
+
+* * *
+
+**This repository has been moved to <https://github.com/groupby/storefront>.**
+
+* * *
 
 StoreFront `<gb-sort>` component
 
